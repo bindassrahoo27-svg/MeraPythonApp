@@ -5,16 +5,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      # Step 1: Code checkout karein (Latest v4 version)
+      - uses: actions/checkout@v4
 
+      # Step 2: Buildozer se App Build karein
       - name: Buildozer Action
         uses: ArtemSerebrennukov/buildozer-action@v1
         with:
           workdir: .
           buildozer_version: master
 
+      # Step 3: APK Upload karein (Fix: v2 ko v4 kar diya hai)
       - name: Upload APK
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: package
           path: bin/*.apk
